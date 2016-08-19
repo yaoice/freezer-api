@@ -17,6 +17,8 @@ limitations under the License.
 
 from freezer_api.api.v1 import actions
 from freezer_api.api.v1 import backups
+from freezer_api.api.v1 import cinderbackups
+from freezer_api.api.v1 import cinderrestores
 from freezer_api.api.v1 import clients
 from freezer_api.api.v1 import homedoc
 from freezer_api.api.v1 import jobs
@@ -46,6 +48,15 @@ def public_endpoints(storage_driver):
 
         ('/backups/{backup_id}',
          backups.BackupsResource(storage_driver)),
+
+        ('/cinderbackups',
+         cinderbackups.CinderBackupsCollectionResource()),
+
+        ('/cinderbackups/{backup_id}',
+         cinderbackups.CinderBackupsResource()),
+
+        ('/cinderrestores/{backup_id}',
+         cinderrestores.CinderRestoresResource()),
 
         ('/clients',
          clients.ClientsCollectionResource(storage_driver)),
